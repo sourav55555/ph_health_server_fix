@@ -4,7 +4,8 @@ exports.specialtyController = void 0;
 const speciality_service_1 = require("./speciality.service");
 const catchAsync_1 = require("../../shared/catchAsync");
 const createSpecialty = (0, catchAsync_1.catchAsync)(async (req, res) => {
-    const payload = req.body;
+    const payload = { ...req.body, icon: req.file?.path };
+    console.log(payload, "payload");
     const response = await speciality_service_1.specialtyService.createSpecialty(payload);
     res.status(201).json({
         success: true,

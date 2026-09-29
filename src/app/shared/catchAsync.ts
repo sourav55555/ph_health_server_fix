@@ -3,13 +3,10 @@ import { NextFunction, RequestHandler, Request,Response  } from "express"
 export const catchAsync = (fn: RequestHandler) => {
     return async (req: Request, res: Response, next: NextFunction) => {
         try {
-            fn(req,res,next)
+            await fn(req,res,next)
         } catch (e: any) {
-        res.status(500).json({
-            success: false,
-            message: "fetch failed",
-            error: e.message
-        })
+    
+            next(e)
     }
     }
 }

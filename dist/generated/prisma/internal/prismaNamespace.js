@@ -48,7 +48,7 @@ var __importStar = (this && this.__importStar) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.defineExtension = exports.NullsOrder = exports.QueryMode = exports.SortOrder = exports.SpecialtyScalarFieldEnum = exports.PatientScalarFieldEnum = exports.VerificationScalarFieldEnum = exports.AccountScalarFieldEnum = exports.SessionScalarFieldEnum = exports.UserScalarFieldEnum = exports.TransactionIsolationLevel = exports.ModelName = exports.AnyNull = exports.JsonNull = exports.DbNull = exports.NullTypes = exports.prismaVersion = exports.getExtensionContext = exports.Decimal = exports.Sql = exports.raw = exports.join = exports.empty = exports.sql = exports.PrismaClientValidationError = exports.PrismaClientInitializationError = exports.PrismaClientRustPanicError = exports.PrismaClientUnknownRequestError = exports.PrismaClientKnownRequestError = void 0;
+exports.defineExtension = exports.JsonNullValueFilter = exports.NullsOrder = exports.QueryMode = exports.NullableJsonNullValueInput = exports.SortOrder = exports.SuperAdminScalarFieldEnum = exports.DoctorSpecialtyScalarFieldEnum = exports.SpecialtyScalarFieldEnum = exports.ScheduleScalarFieldEnum = exports.ReviewScalarFieldEnum = exports.PrescriptionScalarFieldEnum = exports.PaymentScalarFieldEnum = exports.PatientHealthDataScalarFieldEnum = exports.PatientScalarFieldEnum = exports.MedicalReportScalarFieldEnum = exports.DoctorSchedulesScalarFieldEnum = exports.DoctorScalarFieldEnum = exports.VerificationScalarFieldEnum = exports.AccountScalarFieldEnum = exports.SessionScalarFieldEnum = exports.UserScalarFieldEnum = exports.AppointmentScalarFieldEnum = exports.AdminScalarFieldEnum = exports.TransactionIsolationLevel = exports.ModelName = exports.AnyNull = exports.JsonNull = exports.DbNull = exports.NullTypes = exports.prismaVersion = exports.getExtensionContext = exports.Decimal = exports.Sql = exports.raw = exports.join = exports.empty = exports.sql = exports.PrismaClientValidationError = exports.PrismaClientInitializationError = exports.PrismaClientRustPanicError = exports.PrismaClientUnknownRequestError = exports.PrismaClientKnownRequestError = void 0;
 const runtime = __importStar(require("@prisma/client/runtime/client"));
 /**
  * Prisma Errors
@@ -103,12 +103,24 @@ exports.JsonNull = runtime.JsonNull;
  */
 exports.AnyNull = runtime.AnyNull;
 exports.ModelName = {
+    Admin: 'Admin',
+    Appointment: 'Appointment',
     User: 'User',
     Session: 'Session',
     Account: 'Account',
     Verification: 'Verification',
+    Doctor: 'Doctor',
+    DoctorSchedules: 'DoctorSchedules',
+    MedicalReport: 'MedicalReport',
     Patient: 'Patient',
-    Specialty: 'Specialty'
+    PatientHealthData: 'PatientHealthData',
+    Payment: 'Payment',
+    Prescription: 'Prescription',
+    Review: 'Review',
+    Schedule: 'Schedule',
+    Specialty: 'Specialty',
+    DoctorSpecialty: 'DoctorSpecialty',
+    SuperAdmin: 'SuperAdmin'
 };
 /**
  * Enums
@@ -119,6 +131,29 @@ exports.TransactionIsolationLevel = runtime.makeStrictEnum({
     RepeatableRead: 'RepeatableRead',
     Serializable: 'Serializable'
 });
+exports.AdminScalarFieldEnum = {
+    id: 'id',
+    userId: 'userId',
+    name: 'name',
+    email: 'email',
+    profilePhoto: 'profilePhoto',
+    contactNumber: 'contactNumber',
+    isDeleted: 'isDeleted',
+    deletedAt: 'deletedAt',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+};
+exports.AppointmentScalarFieldEnum = {
+    id: 'id',
+    patientId: 'patientId',
+    doctorId: 'doctorId',
+    videoCallingId: 'videoCallingId',
+    status: 'status',
+    paymentStatus: 'paymentStatus',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    scheduleId: 'scheduleId'
+};
 exports.UserScalarFieldEnum = {
     id: 'id',
     name: 'name',
@@ -166,6 +201,45 @@ exports.VerificationScalarFieldEnum = {
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
 };
+exports.DoctorScalarFieldEnum = {
+    id: 'id',
+    name: 'name',
+    email: 'email',
+    profilePhoto: 'profilePhoto',
+    contactNumber: 'contactNumber',
+    address: 'address',
+    isDeleted: 'isDeleted',
+    deletedAt: 'deletedAt',
+    registrationNumber: 'registrationNumber',
+    experience: 'experience',
+    gender: 'gender',
+    appointmentFee: 'appointmentFee',
+    qualification: 'qualification',
+    currentWorkingPlace: 'currentWorkingPlace',
+    designation: 'designation',
+    averageRating: 'averageRating',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    userId: 'userId'
+};
+exports.DoctorSchedulesScalarFieldEnum = {
+    scheduleId: 'scheduleId',
+    doctorId: 'doctorId',
+    isBooked: 'isBooked',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+};
+exports.MedicalReportScalarFieldEnum = {
+    id: 'id',
+    patientId: 'patientId',
+    doctorId: 'doctorId',
+    appointmentId: 'appointmentId',
+    diagnosis: 'diagnosis',
+    treatment: 'treatment',
+    followUpDate: 'followUpDate',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+};
 exports.PatientScalarFieldEnum = {
     id: 'id',
     name: 'name',
@@ -180,6 +254,66 @@ exports.PatientScalarFieldEnum = {
     updatedAt: 'updatedAt',
     userId: 'userId'
 };
+exports.PatientHealthDataScalarFieldEnum = {
+    id: 'id',
+    patientId: 'patientId',
+    gender: 'gender',
+    dateOfBirth: 'dateOfBirth',
+    bloodGroup: 'bloodGroup',
+    hasAllergies: 'hasAllergies',
+    hasDiabetes: 'hasDiabetes',
+    height: 'height',
+    weight: 'weight',
+    smokingStatus: 'smokingStatus',
+    dietaryPreferences: 'dietaryPreferences',
+    pregnancyStatus: 'pregnancyStatus',
+    mentalHealthHistory: 'mentalHealthHistory',
+    immunizationStatus: 'immunizationStatus',
+    hasPastSurgeries: 'hasPastSurgeries',
+    recentAnxiety: 'recentAnxiety',
+    recentDepression: 'recentDepression',
+    maritalStatus: 'maritalStatus',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+};
+exports.PaymentScalarFieldEnum = {
+    id: 'id',
+    amount: 'amount',
+    transactionId: 'transactionId',
+    stripeEventId: 'stripeEventId',
+    status: 'status',
+    paymentGatewayData: 'paymentGatewayData',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    appointmentId: 'appointmentId'
+};
+exports.PrescriptionScalarFieldEnum = {
+    id: 'id',
+    followUpDate: 'followUpDate',
+    instructions: 'instructions',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    appointmentId: 'appointmentId',
+    patientId: 'patientId',
+    doctorId: 'doctorId'
+};
+exports.ReviewScalarFieldEnum = {
+    id: 'id',
+    patientId: 'patientId',
+    doctorId: 'doctorId',
+    appointmentId: 'appointmentId',
+    rating: 'rating',
+    comment: 'comment',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+};
+exports.ScheduleScalarFieldEnum = {
+    id: 'id',
+    startDateTime: 'startDateTime',
+    endDateTime: 'endDateTime',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+};
 exports.SpecialtyScalarFieldEnum = {
     id: 'id',
     title: 'title',
@@ -190,9 +324,30 @@ exports.SpecialtyScalarFieldEnum = {
     isDeleted: 'isDeleted',
     deletedAt: 'deletedAt'
 };
+exports.DoctorSpecialtyScalarFieldEnum = {
+    id: 'id',
+    doctorId: 'doctorId',
+    specialtyId: 'specialtyId'
+};
+exports.SuperAdminScalarFieldEnum = {
+    id: 'id',
+    userId: 'userId',
+    name: 'name',
+    email: 'email',
+    profilePhoto: 'profilePhoto',
+    contactNumber: 'contactNumber',
+    isDeleted: 'isDeleted',
+    deletedAt: 'deletedAt',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+};
 exports.SortOrder = {
     asc: 'asc',
     desc: 'desc'
+};
+exports.NullableJsonNullValueInput = {
+    DbNull: exports.DbNull,
+    JsonNull: exports.JsonNull
 };
 exports.QueryMode = {
     default: 'default',
@@ -201,6 +356,11 @@ exports.QueryMode = {
 exports.NullsOrder = {
     first: 'first',
     last: 'last'
+};
+exports.JsonNullValueFilter = {
+    DbNull: exports.DbNull,
+    JsonNull: exports.JsonNull,
+    AnyNull: exports.AnyNull
 };
 exports.defineExtension = runtime.Extensions.defineExtension;
 //# sourceMappingURL=prismaNamespace.js.map

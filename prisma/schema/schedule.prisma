@@ -1,0 +1,14 @@
+model Schedule {
+    id        String   @id @default(dbgenerated("gen_random_uuid()"))
+    startDateTime DateTime
+    endDateTime   DateTime
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    // relations
+    doctorSchedule DoctorSchedules[]
+    appointments   Appointment[]
+
+    @@map("schedules")
+}

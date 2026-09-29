@@ -6,7 +6,8 @@ import { catchAsync, sendResponse } from "../../shared/catchAsync";
 
 const createSpecialty = catchAsync(
     async (req: Request, res: Response) => {
-        const payload = req.body;
+        const payload = { ...req.body, icon: req.file?.path };
+        console.log(payload, "payload")
     
         const response = await specialtyService.createSpecialty(payload);
 

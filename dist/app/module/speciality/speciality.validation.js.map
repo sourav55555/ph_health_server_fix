@@ -1,0 +1,1 @@
+{"version":3,"file":"speciality.validation.js","sourceRoot":"","sources":["../../../../src/app/module/speciality/speciality.validation.ts"],"names":[],"mappings":";;;;;;AAAA,8CAAoB;AAEP,QAAA,wBAAwB,GAAG,aAAC,CAAC,MAAM,CAAC;IAC7C,KAAK,EAAE,aAAC,CAAC,MAAM,CAAC,mBAAmB,CAAC;IACpC,WAAW,EAAE,aAAC,CAAC,MAAM,CAAC,yBAAyB,CAAC,CAAC,QAAQ,EAAE;CAE9D,CAAC,CAAA"}

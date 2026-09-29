@@ -9,7 +9,7 @@
 * 🟢 You can import this file directly.
 */
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UserStatus = exports.Role = void 0;
+exports.MaritalStatus = exports.BloodGroup = exports.Gender = exports.PaymentStatus = exports.AppointmentStatus = exports.UserStatus = exports.Role = void 0;
 exports.Role = {
     SUPER_ADMIN: 'SUPER_ADMIN',
     ADMIN: 'ADMIN',
@@ -20,5 +20,36 @@ exports.UserStatus = {
     BLOCKED: 'BLOCKED',
     DELETED: 'DELETED',
     ACTIVE: 'ACTIVE'
+};
+exports.AppointmentStatus = {
+    SCHEDULED: 'SCHEDULED',
+    INPROGRESS: 'INPROGRESS',
+    COMPLETED: 'COMPLETED',
+    CANCELED: 'CANCELED'
+};
+exports.PaymentStatus = {
+    PAID: 'PAID',
+    UNPAID: 'UNPAID'
+};
+exports.Gender = {
+    MALE: 'MALE',
+    FEMALE: 'FEMALE',
+    OTHER: 'OTHER'
+};
+exports.BloodGroup = {
+    A_POSITIVE: 'A_POSITIVE',
+    A_NEGATIVE: 'A_NEGATIVE',
+    B_POSITIVE: 'B_POSITIVE',
+    B_NEGATIVE: 'B_NEGATIVE',
+    AB_POSITIVE: 'AB_POSITIVE',
+    AB_NEGATIVE: 'AB_NEGATIVE',
+    O_POSITIVE: 'O_POSITIVE',
+    O_NEGATIVE: 'O_NEGATIVE'
+};
+exports.MaritalStatus = {
+    MARRIED: 'MARRIED',
+    UNMARRIED: 'UNMARRIED',
+    DIVORCED: 'DIVORCED',
+    WIDOWED: 'WIDOWED'
 };
 //# sourceMappingURL=enums.js.map
